@@ -1,0 +1,56 @@
+﻿@model IdentitiyEntity.Models.ProductDetail
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Online Westfield St Lukes Mall - Product Detail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.LabelFor(model => model.productname, "Product Name")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.productname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.productimg)
+        </dt>
+
+        <dd>
+            <img src="@System.Configuration.ConfigurationManager.AppSettings["siteurl"].ToString()@System.Configuration.ConfigurationManager.AppSettings["UserImagePath"].ToString()@Url.Content(Model.productimg)" alt="Image" height="250px" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.productprice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.productprice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.userip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userip)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

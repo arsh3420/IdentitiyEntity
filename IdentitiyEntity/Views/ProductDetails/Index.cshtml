@@ -1,0 +1,49 @@
+﻿@model IEnumerable<IdentitiyEntity.Models.ProductDetail>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Featured Products</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Product Name
+        </th>
+        <th>
+            Image
+        </th>
+        <th>
+           Price ($)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.productname)
+            </td>
+            <td>
+                @if (item.productimg != null)
+                {
+                    <img src="@System.Configuration.ConfigurationManager.AppSettings["siteurl"].ToString()@System.Configuration.ConfigurationManager.AppSettings["UserImagePath"].ToString()@Url.Content(item.productimg)" alt="Image" height="50px" />
+                }
+            </td>
+            <td>
+                $ @Html.DisplayFor(modelItem => item.productprice)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.id })
+            </td>
+        </tr>
+    }
+
+</table>

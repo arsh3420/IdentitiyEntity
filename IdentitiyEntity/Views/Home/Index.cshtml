@@ -1,0 +1,48 @@
+﻿@model IEnumerable<IdentitiyEntity.Models.ProductDetail>
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <marquee behavior="alternate" loop="1000000" scrollamount="4" scrolldelay="20" bgcolor="skyblue" onmouseover="this.stop()" onmouseout="this.start()">
+        <div class="zoom">
+            <img src="~/Webfiles/banner/banner1.jpeg" width="300px" height="225px"></img>
+            <img src="~/Webfiles/banner/banner2.jpg" width="300px" height="225px"></img>
+            <img src="~/Webfiles/banner/banner3.jpg" width="300px" height="225px"></img>
+            <img src="~/Webfiles/banner/banner4.jpg" width="300px" height="225px"></img>
+            <img src="~/Webfiles/banner/banner5.jpg" width="300px" height="225px"></img>
+            <img src="~/Webfiles/banner/banner6.jpg" width="300px" height="225px"></img>
+            <img src="~/Webfiles/banner/banner7.jpg" width="300px" height="225px"></img>
+            <img src="~/Webfiles/banner/banner8.jpg" width="300px" height="225px"></img>
+            <img src="~/Webfiles/banner/banner9.jpg" width="300px" height="225px"></img>
+            <img src="~/Webfiles/banner/banner10.jpg" width="300px" height="225px"></img>
+        </div>
+    </marquee>
+</div>
+<div class="row">
+    <div class="col-sm-12 text-center"><h2>Featured Products</h2></div>
+</div>
+<div class="row container">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 column">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <img src="@System.Configuration.ConfigurationManager.AppSettings["siteurl"].ToString()@System.Configuration.ConfigurationManager.AppSettings["UserImagePath"].ToString()@Url.Content(item.productimg)" alt="Image" class="" />
+                </div>
+                <div class="col-sm-12">
+                    <hr />
+                </div>
+                <div class="col-sm-12 text-center column">
+                    <b>
+                        @Html.DisplayFor(modelItem => item.productname)
+                        <br />
+                        $@Html.DisplayFor(modelItem => item.productprice)
+                    </b>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>

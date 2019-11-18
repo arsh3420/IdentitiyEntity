@@ -1,0 +1,45 @@
+﻿@model IdentitiyEntity.Models.ProductDetail
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Online Westfield St Lukes Mall - Product Detail</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.LabelFor(model => model.productname, "Product Name")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.productname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.productimg)
+        </dt>
+
+        <dd>
+            <img src="@System.Configuration.ConfigurationManager.AppSettings["siteurl"].ToString()@System.Configuration.ConfigurationManager.AppSettings["UserImagePath"].ToString()@Url.Content(Model.productimg)" alt="Image"  height="250px"  />
+        </dd>
+
+        <dt>
+            @Html.LabelFor(model => model.productprice, "Price ($)")
+        </dt>
+
+        <dd>
+            $ @Html.DisplayFor(model => model.productprice)
+        </dd>
+
+       
+        
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
